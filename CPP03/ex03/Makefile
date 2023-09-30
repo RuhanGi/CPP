@@ -1,0 +1,16 @@
+NAME = diamondtrap
+
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+
+all: $(NAME)
+
+$(NAME):
+	@c++ -Wall -Wextra -Werror -std=c++98 $(SRCS) -o $(NAME)
+	@printf "\x1B[32m$(NAME) ready\x1B[0m\n";
+
+clean:
+
+fclean:
+	@rm $(NAME)
+
+re: fclean all
