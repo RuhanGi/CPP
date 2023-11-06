@@ -84,7 +84,7 @@ class PmergeMe
 					if (*needle >= *it)
 					{
 						for (typename T::iterator swaprange = it; swaprange != needle; swaprange--)
-							swap(*std::prev(swaprange), *swaprange);
+							swap(*(--swaprange), *(++swaprange));
 						break ;
 					}
 			}
@@ -134,8 +134,8 @@ class PmergeMe
 			if (container.size() != this->size)
 				throw PmergeMe::Unsorted();
 
-			for (typename T::iterator it = std::next(container.begin()); it != container.end(); it++)
-				if (*std::prev(it) > *it)
+			for (typename T::iterator it = ++container.begin(); it != container.end(); it++)
+				if (*(--it) > *(++it))
 					throw PmergeMe::Unsorted();
 		}
 
