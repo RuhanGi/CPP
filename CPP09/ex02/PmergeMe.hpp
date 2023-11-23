@@ -6,7 +6,7 @@
 /*   By: mgoltay <mgoltay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 12:23:48 by mgoltay           #+#    #+#             */
-/*   Updated: 2023/11/03 21:40:21 by mgoltay          ###   ########.fr       */
+/*   Updated: 2023/11/23 21:07:58 by mgoltay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #define CYAN	"\x1B[36m"
 #define RESET	"\x1B[0m"
 
-#define MAXSIZE 1
+#define MAXSIZE 5
 
 class PmergeMe
 {
@@ -78,16 +78,9 @@ class PmergeMe
 		template <typename T>
 		T	&insertionSort( T &container )
 		{
-			for (typename T::iterator it = container.begin(); it != container.end(); it++)
-			{
-				for (typename T::iterator needle = it; needle-- != container.begin(); )
-					if (*needle >= *it)
-					{
-						for (typename T::iterator swaprange = it; swaprange != needle; swaprange--)
-							swap(*(--swaprange), *(++swaprange));
-						break ;
-					}
-			}
+			for (typename T::iterator before = container.begin(), it = container.begin(); ++it != container.end(); before = it)
+				while (it != container.begin() && *before > *it)
+					swap(*(before--), *(it--));
 			return (container);
 		}
 

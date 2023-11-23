@@ -25,8 +25,8 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-t: re
-	./PmergeMe `jot -r 100 1 100000 | tr '\n' ' '`
-	# ./PmergeMe `jot -r 18000 1 100000 | tr '\n' ' '`
+t: all
+	# ./PmergeMe `jot -r 10 1 100000 | tr '\n' ' '`
+	./PmergeMe `jot -r 18000 1 100000 | tr '\n' ' '`
 
 re: fclean all

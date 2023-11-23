@@ -6,7 +6,7 @@
 /*   By: mgoltay <mgoltay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 12:23:45 by mgoltay           #+#    #+#             */
-/*   Updated: 2023/11/03 21:39:14 by mgoltay          ###   ########.fr       */
+/*   Updated: 2023/11/23 21:11:41 by mgoltay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ unsigned int	PmergeMe::parse(char *str)
 
 	unsigned long nbr = 0;
 	int	i = 0;
-
-	while (std::isspace(str[i]))
-		i++;
-	if (str[i] == '+')
-		i++;
-
+	while (std::isspace(str[i])) i++;
+	if (str[i] == '+') i++;
 	do
 	{
 		if (!isdigit(str[i]))
@@ -33,10 +29,8 @@ unsigned int	PmergeMe::parse(char *str)
 		if (nbr > UINT_MAX)
 			throw PmergeMe::InvalidArgument();
 	} while (str[i]);
-
 	if (nbr == 0)
 		throw PmergeMe::InvalidArgument();
-
 	return (nbr);
 }
 
